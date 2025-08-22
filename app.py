@@ -86,7 +86,7 @@ import pickle
 import numpy as np
 
 # Load all saved models and data
-similarity_df = pickle.load(open("similarity_matrix_compressed.pkl", "rb"))
+similarity_df = pickle.load(open("similarity_matrix.pkl", "rb"))
 desc_to_code = pickle.load(open("desc_to_code.pkl", "rb"))
 code_to_desc = pickle.load(open("code_to_desc.pkl", "rb"))
 kmeans_model = pickle.load(open("kmeans_model.pkl", "rb"))
