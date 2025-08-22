@@ -111,43 +111,4 @@ def predict_customer_segment(recency, frequency, monetary):
     return cluster_id, label
 
 
-#  Streamlit App
-
-
-st.set_page_config(page_title="Shopper Spectrum", layout="centered")
-st.title("🛒 Shopper Spectrum")
-
-# Create tabs
-tab1, tab2 = st.tabs(["Product Recommender", "Customer Segmentation"])
-
-
-#  TAB 1: Recommender
-
-with tab1:
-    st.header("Product Recommender")
-    st.markdown("Select a product to get similar product recommendations:")
-
-    product_names = sorted(desc_to_code.keys())
-    product_input = st.selectbox("Choose a product:", product_names)
-
-    if st.button("Get Recommendations"):
-        recommendations = get_similar_products(product_input)
-        st.markdown("### 🧾 Recommended Products:")
-        for i, item in enumerate(recommendations, start=1):
-            st.markdown(f"{i}. {item}")
-
-
-# 📊 TAB 2: Segmentation
-
-with tab2:
-    st.header("Customer Segmentation")
-    st.markdown("Enter RFM values to predict the customer segment.")
-
-    r = st.number_input("Recency (days since last purchase)", min_value=0, step=1)
-    f = st.number_input("Frequency (number of purchases)", min_value=0, step=1)
-    m = st.number_input("Monetary (total spend)", min_value=0.0, step=10.0)
-
-    if st.button("Predict Segment"):
-        cluster_id, segment = predict_customer_segment(r, f, m)
-        st.success(f"Predicted Segment: **{segment}** (Cluster {cluster_id})")
 
