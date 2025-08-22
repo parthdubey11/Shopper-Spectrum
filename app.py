@@ -81,19 +81,7 @@ with tab2:
         cluster_id, segment = predict_customer_segment(r, f, m)
         st.success(f"Predicted Segment: **{segment}** (Cluster {cluster_id})")
 
-import streamlit as st
-import pickle
-import numpy as np
 
-# Load all saved models and data
-similarity_df = pickle.load(open("similarity_matrix.pkl", "rb"))
-desc_to_code = pickle.load(open("desc_to_code.pkl", "rb"))
-code_to_desc = pickle.load(open("code_to_desc.pkl", "rb"))
-kmeans_model = pickle.load(open("kmeans_model.pkl", "rb"))
-scaler = pickle.load(open("scaler.pkl", "rb"))
-
-
-#  Helper Functions
 
 
 # 1. Product Recommendations
